@@ -1,8 +1,12 @@
 <template>
-  <div v-if="answeredCorrect">VIDEO</div>
+  <div v-if="answeredCorrect" class="videoContainer">
+    <video width="800" height="500" controls autoplay>
+      <source src="./movie.mp4" type="video/mp4">
+    </video>
+  </div>
   <div v-if="!answeredCorrect" class="container welcome">
-    <div style="padding: 70px;">
-      <h1 style="font-size: 50px;">Välkommen till Eva och Jonatans julkort!</h1>
+    <div style="padding: 70px">
+      <h1 style="font-size: 50px; font-family: Verdana, sans-serif">Välkommen till Eva och Jonatans julkort!</h1>
     </div>
   </div>
   <div v-if="!answeredCorrect" class="container login">
@@ -13,20 +17,30 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import Login from "./components/Login.vue";
-const answeredCorrect = ref<boolean>(false)
+const answeredCorrect = ref<boolean>(false);
 </script>
 
 <style scoped>
+
+.videoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #668c6f;
+}
+
 .container {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Verdana, sans-serif;
+  color: #668c6f;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 50%;
+  height: 40%;
 }
 
 .welcome {
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .login {
