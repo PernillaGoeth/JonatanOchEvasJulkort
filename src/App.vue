@@ -1,9 +1,8 @@
 <template>
   <div v-if="answeredCorrect" class="videoContainer">
-    <!-- <video width="800" height="500" controls autoplay>
+    <video width="800" height="500" controls autoplay>
       <source src="./movie.mp4" type="video/mp4">
-    </video> -->
-    Video
+    </video>
   </div>
   <div v-if="!answeredCorrect" class="container welcome">
     <div style="padding: 70px">
