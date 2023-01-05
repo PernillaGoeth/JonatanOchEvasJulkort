@@ -5,7 +5,7 @@
       juldagsmorgonen?
     </div>
     <input type="text" ref="inputText" class="input"/>
-    <div v-if="tries > 0" style="color: #ab453e; font-weight: 700;">Fel! Försök Igen!</div>
+    <div v-if="tries > 0" style="color: #ab453e; font-weight: 700">Fel! Försök Igen!</div>
     <button
       v-if="tries > 1 && !buttonIsPressed"
       class="button"
@@ -25,16 +25,14 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref } from "vue";
 
-const emit = defineEmits<{
-  (e: "correctAnswer"): void;
-}>();
+const emit = defineEmits(['correctAnswer'])
 
-const inputText = ref<HTMLInputElement>();
-const buttonIsPressed = ref<boolean>(false);
-const tries = ref<number>(0);
+const inputText = ref();
+const buttonIsPressed = ref(false);
+const tries = ref(0);
 
 const submit = () => {
   if (inputText.value && inputText.value.value === "264") {
@@ -59,7 +57,6 @@ const submit = () => {
   border-radius: 10px;
   padding: 24px;
 }
-
 .input {
   border-radius: 5px;
   border: none;
@@ -68,7 +65,6 @@ const submit = () => {
   outline: none;
   color: #1a251d;
 }
-
 .button {
   border-radius: 5px;
   border: none;
@@ -77,7 +73,6 @@ const submit = () => {
   color: #1a251d;
   font-family: Verdana, sans-serif
 }
-
 .button:hover {
   background-color: #eceaea;
 }

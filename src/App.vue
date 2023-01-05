@@ -14,14 +14,13 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref } from "vue";
 import Login from "./components/Login.vue";
-const answeredCorrect = ref<boolean>(false);
+const answeredCorrect = ref(false);
 </script>
 
 <style scoped>
-
 .videoContainer {
   display: flex;
   justify-content: center;
