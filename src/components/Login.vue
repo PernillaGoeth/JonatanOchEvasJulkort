@@ -4,7 +4,7 @@
       Hur många julenötter (oavsett knäckstatus) fanns det på Pinetorpet på
       juldagsmorgonen?
     </div>
-    <input type="text" ref="inputText" class="input"/>
+    <input v-model="inputText" type="text" ref="inputText" class="input"/>
     <div v-if="tries > 0" style="color: #ab453e; font-weight: 700">Fel! Försök Igen!</div>
     <button
       v-if="tries > 1 && !buttonIsPressed"
@@ -25,22 +25,28 @@
   </div>
 </template>
 
-<script setup>
-import { ref } from "vue";
-
-const emit = defineEmits(['correctAnswer'])
-
-const inputText = ref();
-const buttonIsPressed = ref(false);
-const tries = ref(0);
-
-const submit = () => {
-  if (inputText.value && inputText.value.value === "264") {
-    emit("correctAnswer");
-  } else {
-    tries.value = tries.value + 1;
+<script>
+export default {
+  data() {
+    return {
+      buttonIsPressed: false,
+      tries: 0,
+      inputText: ''
+    }
+  },
+  methods: {
+    submit() {
+       if (this.inputText === "264") {
+        this.$emit("correctAnswer");
+      } else {
+        this.tries = this.tries + 1;
+      }
+    },
+  },
+  mounted() {
+    this.$refs.inputText.focus()
   }
-};
+}
 </script>
 
 <style scoped>

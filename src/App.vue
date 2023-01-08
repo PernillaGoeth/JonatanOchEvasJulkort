@@ -1,23 +1,33 @@
 <template>
-  <div v-if="answeredCorrect" class="videoContainer">
-    <video width="800" height="500" controls autoplay>
-      <source src="./movie.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div v-if="!answeredCorrect" class="container welcome">
-    <div style="padding: 70px">
-      <h1 style="font-size: 50px; font-family: Verdana, sans-serif">Välkommen till Eva och Jonatans julkort!</h1>
+  <div style="height: 100vh; width: 100vw;">
+    <div v-if="answeredCorrect" class="videoContainer">
+      <video width="800" height="500" controls autoplay>
+        <source src="./movie.mp4" type="video/mp4">
+      </video>
     </div>
-  </div>
-  <div v-if="!answeredCorrect" class="container login">
-    <Login @correctAnswer="answeredCorrect = true"/>
+    <div v-if="!answeredCorrect" class="container welcome">
+      <div style="padding: 70px">
+        <h1 style="font-size: 50px; font-family: Verdana, sans-serif">Välkommen till Eva och Jonatans julkort!</h1>
+      </div>
+    </div>
+    <div v-if="!answeredCorrect" class="container login">
+      <Login @correctAnswer="answeredCorrect = true"/>
+    </div>
   </div>
 </template>
 
-<script setup>
-import { ref } from "vue";
+<script>
 import Login from "./components/Login.vue";
-const answeredCorrect = ref(false);
+export default {
+  data() {
+    return {
+      answeredCorrect: false
+    }
+  },
+  components: {
+    Login
+  }
+}
 </script>
 
 <style scoped>
